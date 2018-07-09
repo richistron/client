@@ -3,7 +3,7 @@ const INITIAL_STATE = {
   name: 'yolo',
 };
 
-const tenant_reducer = (state, action) => {
+const tenantReducer = (state, action) => {
   if (!state) {
     return INITIAL_STATE;
   }
@@ -11,5 +11,5 @@ const tenant_reducer = (state, action) => {
   return state;
 };
 
-export default tenant_reducer;
+export default tenantReducer;
 
