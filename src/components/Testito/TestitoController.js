@@ -2,10 +2,14 @@ import {connect} from 'react-redux';
 
 export default (Component) => connect(
   (state) => ({
-    foo: 'adlfkjadklsfj',
-    tenant_name: state.tenant.name,
+    tenant_name: state.getIn(['tenant', 'name']),
   }),
-  () => ({
-    bar: () => console.log('bar')
+  (dispatch) => ({
+    handleClick: () => {
+      dispatch({
+        type: 'CHANGE_TENANT_NAME',
+        name: 'richistron'
+      });
+    }
   })
 )(Component);

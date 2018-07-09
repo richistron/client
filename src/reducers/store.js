@@ -1,4 +1,5 @@
-import { createStore, combineReducers, applyMiddleware} from 'redux';
+import { createStore, applyMiddleware} from 'redux';
+import { combineReducers } from 'redux-immutable';
 import tenantReducer from './tenantReducer';
 import thunk from 'redux-thunk';
 

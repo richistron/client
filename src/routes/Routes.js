@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import DefaultLayout from '../layouts/DefaultLayout';
-import SampleLayout from '../layouts/SampleLayout';
+import Testito from '../components/Testito'
 
 class Routes extends Component {
   render() {
@@ -9,8 +8,7 @@ class Routes extends Component {
       <div>
         <Router>
           <div>
-            <Route exact path="/" component={DefaultLayout} />
-            <Route exact path="/sample" component={SampleLayout} />
+            <Route exact path="/" component={Testito} />
           </div>
         </Router>
       </div>

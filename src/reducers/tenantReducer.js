@@ -1,3 +1,4 @@
+import {fromJS} from 'immutable';
 
 const INITIAL_STATE = {
   name: 'yolo',
@@ -5,10 +6,18 @@ const INITIAL_STATE = {
 
 const tenantReducer = (state, action) => {
   if (!state) {
-    return INITIAL_STATE;
+   return fromJS( INITIAL_STATE );
   }
 
-  return state;
+  switch (action.type) {
+    case 'CHANGE_TENANT_NAME': {
+     return state.set('name', action.name);
+    }
+
+    default: {
+      return state;
+    }
+  }
 };
 
 export default tenantReducer;
