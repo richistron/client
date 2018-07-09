@@ -1,12 +1,13 @@
 import {fromJS} from 'immutable';
 
-const INITIAL_STATE = {
-  name: 'yolo',
-};
+export const INITIAL_STATE = fromJS({
+  name: null,
+});
 
+// TODO add tests
 const tenantReducer = (state, action) => {
   if (!state) {
-   return fromJS( INITIAL_STATE );
+   return INITIAL_STATE;
   }
 
   switch (action.type) {

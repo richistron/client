@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
-import Testito from '../components/Testito'
+import HomePage from '../components/pages/HomePage';
+import LoginPage from '../components/pages/LoginPage';
 
 class Routes extends Component {
   render() {
@@ -8,7 +9,8 @@ class Routes extends Component {
       <div>
         <Router>
           <div>
-            <Route exact path="/" component={Testito} />
+            <Route exact path="/" component={HomePage} />
+            <Route exact path="/login" component={LoginPage} />
           </div>
         </Router>
       </div>
