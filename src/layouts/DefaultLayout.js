@@ -1,16 +1,20 @@
 import React from 'react'
 import { Container, Divider, Header, Segment } from 'semantic-ui-react'
+import Testito from '../components/Testito';
 
-const DefaultLayout = () => (
-    <Container style={{ paddingTop: '20px' }} text>
+const DefaultLayout = (props) => (
+  <Container style={{ paddingTop: '20px' }} text>
 
-        <Header as='h2'>Header Groups</Header>
+    {console.log(props)}
+    <Header as='h2'>Header Groups</Header>
 
-        <Segment attached>Segment</Segment>
+    <Segment attached>Segment</Segment>
 
-        <Divider section />
+    <Divider section />
 
-    </Container>
+    <Testito />
+
+  </Container>
 )
 
 export default DefaultLayout;
