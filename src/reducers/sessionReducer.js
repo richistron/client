@@ -1,13 +1,13 @@
 import {fromJS} from 'immutable';
-import {sessionActionsTypes} from '../actions/sessionActions';
+import {sessionActionsTypes} from '../thunks/sessionActions';
+import ls from 'local-storage';
 
 export const INITIAL_STATE = fromJS({
-  access_token: null,
-  client: null,
-  uid: null,
+  access_token: ls('access_token'),
+  client: ls('client'),
+  uid: ls('uid'),
 });
 
-// TODO add tests
 const sessionReducer = (state, action) => {
   if (!state) {
     return INITIAL_STATE;

@@ -1,10 +1,12 @@
-import { createStore, applyMiddleware} from 'redux';
-import { combineReducers } from 'redux-immutable';
-import thunk from 'redux-thunk';
-import tenantReducer from './tenantReducer';
 import sessionReducer from './sessionReducer';
+import tenantReducer from './tenantReducer';
+import thunk from 'redux-thunk';
+import { combineReducers } from 'redux-immutable';
+import { createStore, applyMiddleware} from 'redux';
+import { reducer as formReducer } from 'redux-form/immutable';
 
 const reducer = combineReducers({
+  form: formReducer,
   session: sessionReducer,
   tenant: tenantReducer,
 });
