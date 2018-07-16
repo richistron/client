@@ -1,7 +1,7 @@
 import request from 'superagent';
 
 const {NODE_ENV} = process.env;
-const server = NODE_ENV === 'development' ? 'http://localhost:8000' : '';
+const server = NODE_ENV === 'development' ? 'http://localhost:8000' : 'http://localhost:8000';
 
 const Api = ({ method = 'GET', token = true, data = null, url = null }) =>
   new Promise((resolve, reject) => {
@@ -19,7 +19,7 @@ const Api = ({ method = 'GET', token = true, data = null, url = null }) =>
 
     _request.end((err, res) => {
       if (err) {
-        reject(err);
+        reject(res);
       }
       else {
         resolve(res);

@@ -1,5 +1,6 @@
 export const sessionActionsTypes = {
-  'SESSION_SAVE_TOKEN': 'SESSION_SAVE_TOKEN',
+  SESSION_SAVE_TOKEN: 'SESSION_SAVE_TOKEN',
+  SESSION_SET_ERRORS: 'SESSION_SET_ERRORS',
 };
 
 const sessionActions = {
@@ -9,6 +10,11 @@ const sessionActions = {
     type: sessionActionsTypes.SESSION_SAVE_TOKEN,
     uid,
   }),
+
+  setErrors: (errors) => ({
+    type: sessionActionsTypes.SESSION_SET_ERRORS,
+    errors,
+  })
 };
 
 export default sessionActions;

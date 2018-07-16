@@ -18,7 +18,11 @@ const sessionThunks = {
 
         dispatch(sessionThunks.saveSession({access_token, client, uid}));
       })
-      .catch(() => console.log('vvlv')),
+      .catch(({statusCode}) => {
+        if (statusCode === 401) {
+          dispatch(sessionActions.setErrors({password: 'Contraseña invalida'}))
+        }
+      }),
 
   saveSession: ({access_token, client, uid}) => (dispatch) => {
     ls('access_token', access_token);

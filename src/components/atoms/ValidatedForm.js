@@ -6,7 +6,10 @@ import {reduxForm} from 'redux-form/immutable';
 class ValidatedForm extends React.PureComponent {
   render() {
     return (
-      <Form size={this.props.size} onSubmit={this.props.handleSubmit}>
+      <Form
+        size={this.props.size}
+        onSubmit={this.props.handleSubmit}
+      >
         {this.props.children}
       </Form>
     );
