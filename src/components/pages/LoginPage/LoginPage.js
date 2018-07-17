@@ -15,10 +15,7 @@ class LoginPage extends React.PureComponent {
   render() {
     return (
       <DefaultLayout
-        tenant={this.props.tenant}
-        isUserLogged={this.props.isUserLogged}
         pathname={this.props.location.pathname}
-        key={'login'}
       >
         <Header content={'Iniciar Sesión'}/>
 
@@ -52,10 +49,8 @@ class LoginPage extends React.PureComponent {
 }
 
 LoginPage.propTypes = {
-  isUserLogged: PropTypes.bool.isRequired,
-  tenant: PropTypes.string.isRequired,
-  location: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired,
 };
 
 LoginPage.defaultProps = {

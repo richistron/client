@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react'
 import { Container } from 'semantic-ui-react'
 import { Redirect } from 'react-router-dom';
+import DefaultLayoutController from './DefaultLayoutController';
 
 class DefaultLayout extends React.PureComponent {
   render(){
@@ -35,5 +36,5 @@ DefaultLayout.propTypes = {
   tenant: PropTypes.string.isRequired,
 };
 
-export default DefaultLayout;
+export default DefaultLayoutController( DefaultLayout );
 

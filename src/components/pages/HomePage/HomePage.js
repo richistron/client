@@ -7,10 +7,7 @@ class HomePage extends React.PureComponent {
   render() {
     return (
       <DefaultLayout
-        isUserLogged={this.props.isUserLogged}
         pathname={this.props.location.pathname}
-        tenant={this.props.tenant}
-        key={'home'}
       >
         <Header as='h2'>Home Page</Header>
 
@@ -23,7 +20,6 @@ class HomePage extends React.PureComponent {
 }
 
 HomePage.propTypes = {
-  isUserLogged: PropTypes.bool.isRequired,
   location: PropTypes.object.isRequired,
 };
 
