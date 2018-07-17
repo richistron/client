@@ -9,7 +9,8 @@ export const INITIAL_STATE = fromJS({
   errors: {
     email: '',
     password: '',
-  }
+  },
+  isLoading: false,
 });
 
 const sessionReducer = (state, action) => {
@@ -27,6 +28,10 @@ const sessionReducer = (state, action) => {
 
     case sessionActionsTypes.SESSION_SET_ERRORS: {
       return state.set('errors', fromJS(action.errors));
+    }
+
+    case sessionActionsTypes.SESSION_LOADING: {
+      return state.set('isLoading', action.isLoading);
     }
 
     default: {

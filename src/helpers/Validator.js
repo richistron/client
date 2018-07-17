@@ -1,5 +1,8 @@
 import immutable from 'immutable';
 
+// eslint-disable-next-line
+const emailRegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
 const Validator = {
   required: (value) => {
     if (!value) {
@@ -14,6 +17,16 @@ const Validator = {
     }
     return null;
   },
+
+  email: (value) => {
+    if (!value) {
+      return 'Este campo es requerido';
+    }
+    if (!value.match(emailRegExp)) {
+      return 'Correo electronico invalido';
+    }
+    return null;
+  }
 
 };
 

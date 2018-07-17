@@ -27,8 +27,8 @@ const tenantThunks = {
         dispatch(tenantActions.loading(false));
         if (statusCode === 404) {
           dispatch(tenantActions.setErrors({tenant: 'Empresa no encontrada'}));
+          setTimeout(() => dispatch(tenantActions.setErrors({})), 3000);
         }
-        setTimeout(() => dispatch(tenantActions.setErrors({})), 3000);
         reject();
       })
   }),

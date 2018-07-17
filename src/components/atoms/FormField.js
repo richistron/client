@@ -9,9 +9,9 @@ class FormField extends React.PureComponent {
       <Form.Field>
         <Label
           pointing='below'
-          color={this.props.error || (meta.error && !meta.pristine && !meta.active) ? 'red' : null}
+          color={this.props.error || (meta.error && !meta.pristine) ? 'red' : null}
         >
-          {this.props.error ? this.props.error : (meta.error && !meta.pristine && !meta.active) ? this.props.meta.error : this.props.label}
+          {this.props.error ? this.props.error : (meta.error && !meta.pristine) ? this.props.meta.error : this.props.label}
         </Label>
         <Input
           meta={this.props.meta}

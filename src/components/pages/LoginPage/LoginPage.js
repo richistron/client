@@ -22,6 +22,12 @@ class LoginPage extends React.PureComponent {
         <ValidatedForm
           form={'Login'}
           handleSubmit={this.handleSubmit.bind(this)}
+          validate={this.props.validateForm}
+          loading={this.props.isLoading}
+          initialData={{
+            password: null,
+            email: null,
+          }}
         >
 
           <ValidatedInput
@@ -39,7 +45,11 @@ class LoginPage extends React.PureComponent {
             error={this.props.errors.get('password')}
           />
 
-          <Submit />
+          <Submit
+            fluid
+            disabled={!this.props.isValid}
+            loading={this.props.isLoading}
+          />
 
         </ValidatedForm>
 
