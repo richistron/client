@@ -13,10 +13,6 @@ class LoginPage extends React.PureComponent {
   }
 
   render() {
-    const required = (val) => {
-      // console.log(val);
-      return 'adfadf';
-    };
     return (
       <DefaultLayout
         tenant={this.props.tenant}
@@ -36,7 +32,6 @@ class LoginPage extends React.PureComponent {
             name={'email'}
             placeholder={'juan@example.com'}
             error={this.props.errors.get('email')}
-            validate={[required]}
           />
 
           <ValidatedInput
