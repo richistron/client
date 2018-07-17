@@ -9,6 +9,7 @@ export const INITIAL_STATE = fromJS({
   errors: {
     tenant: '',
   },
+  isLoading: false,
 });
 
 const tenantReducer = (state, action) => {
@@ -25,6 +26,10 @@ const tenantReducer = (state, action) => {
 
     case tenantActionsTypes.TENANT_SET_ERROR: {
       return state.set('errors', fromJS(action.errors))
+    }
+
+    case tenantActionsTypes.TENANT_LOADING: {
+      return state.set('isLoading', action.isLoading);
     }
 
     default: {

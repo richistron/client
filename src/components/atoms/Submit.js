@@ -9,6 +9,8 @@ class Submit extends React.PureComponent {
       content={this.props.content}
       type={this.props.type}
       fluid={this.props.fluid}
+      disabled={this.props.disabled}
+      loading={this.props.loading}
     />
   }
 }
@@ -17,12 +19,16 @@ Submit.propTypes = {
   content: PropTypes.string,
   type: PropTypes.string,
   fluid: PropTypes.bool,
+  disabled: PropTypes.bool,
+  loading: PropTypes.bool,
 };
 
 Submit.defaultProps = {
   content: 'Enviar',
   type: 'text',
   fluid: false,
+  disable: false,
+  loading: false,
 };
 
 export default Submit;

@@ -22,6 +22,9 @@ class TenantPage extends React.PureComponent {
         <ValidatedForm
           form={'TenantSelect'}
           handleSubmit={this.handleSubmit.bind(this)}
+          initialData={{tenant: null}}
+          validate={this.props.validateForm}
+          loading={this.props.isLoading}
         >
 
           <ValidatedInput
@@ -31,7 +34,11 @@ class TenantPage extends React.PureComponent {
             error={this.props.errors.get('tenant')}
           />
 
-          <Submit fluid />
+          <Submit
+            fluid
+            disabled={!this.props.isValid}
+            loading={this.props.isLoading}
+          />
         </ValidatedForm>
       </DefaultLayout>
     );
@@ -40,9 +47,12 @@ class TenantPage extends React.PureComponent {
 
 TenantPage.propTypes = {
   location: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired,
+  isValid: PropTypes.bool,
 };
 
 TenantPage.defaultProps = {
+  isValid: false,
 };
 
 
