@@ -1,6 +1,6 @@
 import Api from '../helpers/Api';
 import Crypto from '../helpers/Crypto';
-import tenantActions from "./tenantActions";
+import tenantActions from './tenantActions';
 import {getFormValues} from 'redux-form/immutable';
 import ls from 'local-storage';
 
