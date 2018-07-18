@@ -1,7 +1,13 @@
 import request from 'superagent';
+import store from '../reducers/store';
+import sessionSelector from '../selectors/sessionSelector';
+import { decode } from './Crypto';
 
-const {NODE_ENV} = process.env;
-const server = NODE_ENV === 'development' ? 'http://localhost:8000' : 'http://localhost:8000';
+const { NODE_ENV } = process.env;
+const server =
+  NODE_ENV === 'development'
+    ? 'http://localhost:8000'
+    : 'http://localhost:8000';
 
 const Api = ({ method = 'GET', token = true, data = null, url = null }) =>
   new Promise((resolve, reject) => {
@@ -12,7 +18,18 @@ const Api = ({ method = 'GET', token = true, data = null, url = null }) =>
     }
 
     if (token) {
-      _request = _request.set('X-API-Key', 'foobar');
+      _request = _request.set(
+        'client',
+        decode(sessionSelector(store.getState()).get('client'))
+      );
+      _request = _request.set(
+        'access_token',
+        decode(sessionSelector(store.getState()).get('access_token'))
+      );
+      _request = _request.set(
+        'uid',
+        decode(sessionSelector(store.getState()).get('uid'))
+      );
     }
 
     _request = _request.set('Accept', 'application/json');
@@ -20,12 +37,10 @@ const Api = ({ method = 'GET', token = true, data = null, url = null }) =>
     _request.end((err, res) => {
       if (err) {
         reject(res);
-      }
-      else {
+      } else {
         resolve(res);
       }
     });
-
   });
 
 export default Api;
