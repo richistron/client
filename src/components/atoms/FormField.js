@@ -1,23 +1,25 @@
 import React from 'react';
-import {Form, Input, Label} from 'semantic-ui-react';
+import { Form, Input, Label } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import lodash from 'lodash';
 
 class FormField extends React.PureComponent {
   render() {
-    const {meta} = this.props;
+    const { error, label, meta, placeholder, type } = this.props;
+    const { pristine } = meta;
     return (
       <Form.Field>
         <Label
-          pointing='below'
-          color={this.props.error || (meta.error && !meta.pristine) ? 'red' : null}
+          pointing="below"
+          color={error || (meta.error && !pristine) ? 'red' : null}
         >
-          {this.props.error ? this.props.error : (meta.error && !meta.pristine) ? this.props.meta.error : this.props.label}
+          {error ? error : meta.error && !pristine ? meta.error : label}
         </Label>
         <Input
-          meta={this.props.meta}
+          meta={meta}
           {...this.props.input}
-          placeholder={this.props.placeholder}
-          type={this.props.type}
+          placeholder={placeholder}
+          type={type}
         />
       </Form.Field>
     );
@@ -28,16 +30,14 @@ FormField.propTypes = {
   error: PropTypes.string,
   label: PropTypes.string,
   placeholder: PropTypes.string,
-  type: PropTypes.string,
+  type: PropTypes.string
 };
 
 FormField.defaultProps = {
   error: null,
   label: null,
   placeholder: null,
-  type: null,
+  type: null
 };
 
 export default FormField;
-
-

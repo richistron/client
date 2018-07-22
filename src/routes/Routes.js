@@ -1,10 +1,9 @@
-import HomePage from '../components/pages/HomePage';
-import LoginPage from '../components/pages/LoginPage';
-// import PropTypes from 'prop-types';
+import CajaPage from '../components/organisms/CajaPage';
+import HomePage from '../components/organisms/HomePage';
+import LoginPage from '../components/organisms/LoginPage';
 import React, { PureComponent } from 'react';
-import TenantPage from '../components/pages/TenantPage';
+import TenantPage from '../components/organisms/TenantPage';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import CajaPage from '../components/pages/CajaPage';
 
 class Routes extends PureComponent {
   render() {

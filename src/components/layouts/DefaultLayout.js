@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Container } from 'semantic-ui-react';
+import { Container, Grid } from 'semantic-ui-react';
 import { Redirect } from 'react-router-dom';
 import DefaultLayoutController from './DefaultLayoutController';
+import Navigation from '../molecules/Navigation';
 
 class DefaultLayout extends React.PureComponent {
   constructor(props) {
@@ -55,7 +56,10 @@ class DefaultLayout extends React.PureComponent {
         {this.invalidTenant() && <Redirect to={{ pathname: '/tenant' }} />}
         {this.invalidLoding() && <Redirect to={{ pathname: '/login' }} />}
         {this.toHome() && <Redirect to={{ pathname: '/' }} />}
-        {this.props.children}
+        <Navigation pathname={this.props.pathname} />
+        <Grid textAlign="center" verticalAlign="middle">
+          <Grid.Column>{this.props.children}</Grid.Column>
+        </Grid>
       </Container>
     );
   }
