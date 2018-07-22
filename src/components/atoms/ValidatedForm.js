@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Form} from 'semantic-ui-react';
-import {reduxForm} from 'redux-form/immutable';
+import { Form, Segment } from 'semantic-ui-react';
+import { reduxForm } from 'redux-form/immutable';
 
 class ValidatedForm extends React.PureComponent {
   render() {
@@ -11,7 +11,7 @@ class ValidatedForm extends React.PureComponent {
         onSubmit={this.props.handleSubmit}
         loading={this.props.loading}
       >
-        {this.props.children}
+        <Segment stacked>{this.props.children}</Segment>
       </Form>
     );
   }
@@ -20,12 +20,12 @@ class ValidatedForm extends React.PureComponent {
 ValidatedForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   size: PropTypes.string,
-  loading: PropTypes.bool,
+  loading: PropTypes.bool
 };
 
 ValidatedForm.defaultProps = {
   size: 'tiny',
-  loading: false,
+  loading: false
 };
 
 export default reduxForm({})(ValidatedForm);

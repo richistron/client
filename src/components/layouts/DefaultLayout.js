@@ -28,7 +28,7 @@ class DefaultLayout extends React.PureComponent {
       this.props.tenant &&
       this.props.isUserLogged &&
       (this.props.pathname === '/login' || this.props.pathname === '/tenant') &&
-      !this.this.props.isSessionLoading
+      !this.props.isSessionLoading
     );
   }
 
@@ -37,7 +37,7 @@ class DefaultLayout extends React.PureComponent {
       this.props.tenant &&
       !this.props.isUserLogged &&
       this.props.pathname !== '/login' &&
-      !this.this.props.isSessionLoading
+      !this.props.isSessionLoading
     );
   }
 
@@ -45,7 +45,7 @@ class DefaultLayout extends React.PureComponent {
     return (
       !this.props.tenant &&
       this.props.pathname !== '/tenant' &&
-      !this.this.props.isSessionLoading
+      !this.props.isSessionLoading
     );
   }
 
