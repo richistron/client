@@ -5,6 +5,13 @@ import { Redirect } from 'react-router-dom';
 import DefaultLayoutController from './DefaultLayoutController';
 
 class DefaultLayout extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.invalidTenant = this.invalidTenant.bind(this);
+    this.invalidLoding = this.invalidLoding.bind(this);
+    this.toHome = this.toHome.bind(this);
+  }
+
   componentDidMount() {
     if (
       this.props.isUserLogged &&
@@ -16,26 +23,38 @@ class DefaultLayout extends React.PureComponent {
     }
   }
 
+  toHome() {
+    return (
+      this.props.tenant &&
+      this.props.isUserLogged &&
+      (this.props.pathname === '/login' || this.props.pathname === '/tenant') &&
+      !this.this.props.isSessionLoading
+    );
+  }
+
+  invalidLoding() {
+    return (
+      this.props.tenant &&
+      !this.props.isUserLogged &&
+      this.props.pathname !== '/login' &&
+      !this.this.props.isSessionLoading
+    );
+  }
+
+  invalidTenant() {
+    return (
+      !this.props.tenant &&
+      this.props.pathname !== '/tenant' &&
+      !this.this.props.isSessionLoading
+    );
+  }
+
   render() {
-    const invalidTenant = props =>
-      !props.tenant &&
-      props.pathname !== '/tenant' &&
-      !this.props.isSessionLoading;
-    const invalidLoding = props =>
-      props.tenant &&
-      !props.isUserLogged &&
-      props.pathname !== '/login' &&
-      !this.props.isSessionLoading;
-    const toHome = props =>
-      props.tenant &&
-      props.isUserLogged &&
-      (props.pathname === '/login' || props.pathname === '/tenant') &&
-      !this.props.isSessionLoading;
     return (
       <Container style={{ paddingTop: '20px' }} text>
-        {invalidTenant(this.props) && <Redirect to={{ pathname: '/tenant' }} />}
-        {invalidLoding(this.props) && <Redirect to={{ pathname: '/login' }} />}
-        {toHome(this.props) && <Redirect to={{ pathname: '/' }} />}
+        {this.invalidTenant() && <Redirect to={{ pathname: '/tenant' }} />}
+        {this.invalidLoding() && <Redirect to={{ pathname: '/login' }} />}
+        {this.toHome() && <Redirect to={{ pathname: '/' }} />}
         {this.props.children}
       </Container>
     );
