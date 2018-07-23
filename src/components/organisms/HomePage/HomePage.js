@@ -59,25 +59,53 @@ class HomePage extends React.PureComponent {
     return (
       <DefaultLayout pathname={this.props.location.pathname}>
         <Segment>
-          <Menu fluid vertical>
-            <Menu.Item active name="inbox">
-              <Button as={Link} fluid to="/caja">
+          <Menu
+            fluid
+            vertical
+          >
+            <Menu.Item
+              active
+              name="inbox"
+            >
+              <Button
+                as={Link}
+                fluid
+                to="/caja"
+              >
                 <Icon name="calculator" />
                 {'Caja'}
-                <Label>{'1'}</Label>
+                <Label>
+                  {'1'}
+                </Label>
               </Button>
             </Menu.Item>
 
-            <Menu.Item active name="inbox">
-              <Button as={Link} fluid to="/">
+            <Menu.Item
+              active
+              name="inbox"
+            >
+              <Button
+                as={Link}
+                fluid
+                to="/"
+              >
                 <Icon name="table" />
                 {'Mesas'}
-                <Label>{'1'}</Label>
+                <Label>
+                  {'1'}
+                </Label>
               </Button>
             </Menu.Item>
 
-            <Menu.Item onClick={this.handleClick} widths={13}>
-              <Button fluid onClick={this.handleClick} to="/">
+            <Menu.Item
+              onClick={this.handleClick}
+              widths={13}
+            >
+              <Button
+                fluid
+                onClick={this.handleClick}
+                to="/"
+              >
                 <Icon name="window close" />
                 {'Logout'}
               </Button>

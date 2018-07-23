@@ -1,5 +1,5 @@
 import React from 'react';
-import { Menu, Icon } from 'semantic-ui-react';
+import { Input, Menu, Icon, Segment } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
@@ -25,15 +25,25 @@ class Navigation extends React.PureComponent {
 
   render() {
     return this.shouldShowMenu() ? (
-      <Menu attached="top">
-        {this.shouldShowBackBtn() && (
-          <Menu.Item>
-            <Link to="/">
-              <Icon name="angle left" />
-            </Link>
-          </Menu.Item>
-        )}
-      </Menu>
+      <Segment>
+        <Menu attached="top">
+          {this.shouldShowBackBtn() && (
+            <Menu.Item>
+              <Link to="/">
+                <Icon name="angle left" />
+              </Link>
+            </Menu.Item>
+          )}
+          <Menu.Menu>
+            <Menu.Item>
+              <Input
+                icon='search'
+                placeholder='Search...'
+              />
+            </Menu.Item>
+          </Menu.Menu>
+        </Menu>
+      </Segment>
     ) : null;
   }
 }
