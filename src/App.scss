@@ -1,0 +1,7 @@
+@import './styles/colors.scss';
+@import './styles/buttons.scss';
+
+#root {
+  background: $primary;
+  @include primary-button();
+}

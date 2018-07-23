@@ -1,0 +1,38 @@
+@mixin primary-button () {
+  & {
+    a {
+      color: $primary;
+
+      &:hover {
+        color: adjust-color($primary, $lightness: -5%, $alpha: -0.5);
+        cursor: pointer;
+      }
+    }
+
+    .button {
+      background: $primary;
+      color: $white;
+
+      &:hover {
+        background: adjust-color($primary, $lightness: -5%, $alpha: -0.5);
+        .label {
+          background: adjust-color($white, $lightness: -5%, $alpha: -0.5);
+        }
+      }
+
+      .label {
+        background: $white;
+        color: $primary;
+        margin-left: 10px;
+        height: 20px;
+        width: 20px;
+        text-align: center;
+        vertical-align: middle;
+        padding: 5px;
+        &:hover {
+          background: adjust-color($white, $lightness: -5%, $alpha: -0.5);
+        }
+      }
+    }
+  }
+}

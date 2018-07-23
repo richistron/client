@@ -21,7 +21,7 @@ const mapDispatchProps = dispatch => ({
     }
 
     if (min(4)(values.get('tenant'))) {
-      return { tenant: 'La empresa debe tener un nombre mayor a 4 létras' };
+      return { tenant: 'Nombre debe ser mayor a 4 létras' };
     }
   }
 });

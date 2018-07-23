@@ -83,7 +83,7 @@
     "react/self-closing-comp":2, // Prevent extra closing tags for components without children (fixable)
     "react/sort-comp":2, // Enforce component methods order (fixable)
     "react/sort-prop-types":2, // Enforce propTypes declarations alphabetical sorting
-    "react/style-prop-object":2, // Enforce style prop value being an object
+    "react/style-prop-object": 2, // Enforce style prop value being an object
     "react/void-dom-elements-no-children":2 // Prevent void DOM elements (e.g. <img />, <br />) from receiving children
   }
 }
