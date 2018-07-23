@@ -2,36 +2,34 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Button } from 'semantic-ui-react';
 
-class Submit extends React.PureComponent {
-  render() {
-    return (
-      <Button
-        primary
-        content={this.props.content}
-        type={this.props.type}
-        fluid={this.props.fluid}
-        disabled={this.props.disabled}
-        loading={this.props.loading}
-        size={this.props.size}
-      />
-    );
-  }
-}
+const Submit = props => (
+  <Button
+    content={props.content}
+    disabled={props.disabled}
+    fluid={props.fluid}
+    loading={props.loading}
+    primary
+    size={props.size}
+    type={props.type}
+  />
+);
 
 Submit.propTypes = {
   content: PropTypes.string,
-  type: PropTypes.string,
-  fluid: PropTypes.bool,
   disabled: PropTypes.bool,
-  loading: PropTypes.bool
+  fluid: PropTypes.bool,
+  loading: PropTypes.bool,
+  size: PropTypes.string,
+  type: PropTypes.string,
 };
 
 Submit.defaultProps = {
   content: 'Enviar',
-  type: 'text',
+  disabled: false,
   fluid: false,
-  disable: false,
-  loading: false
+  loading: false,
+  size: null,
+  type: 'text',
 };
 
 export default Submit;

@@ -7,7 +7,7 @@ const { NODE_ENV } = process.env;
 const server =
   NODE_ENV === 'development'
     ? 'http://localhost:8000'
-    : 'http://localhost:8000';
+    : 'https://api';
 
 const Api = ({ method = 'GET', token = true, data = null, url = null }) =>
   new Promise((resolve, reject) => {

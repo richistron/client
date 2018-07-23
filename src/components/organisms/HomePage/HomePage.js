@@ -5,7 +5,7 @@ import { Segment, Button, Icon } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 class HomePage extends React.PureComponent {
-  logout = e => {
+  handleClick = e => {
     e.preventDefault();
     this.props.logout();
   };
@@ -14,27 +14,43 @@ class HomePage extends React.PureComponent {
     return (
       <DefaultLayout pathname={this.props.location.pathname}>
         <Segment attached>
-          <Button as={Link} fluid to={'/caja'}>
+          <Button
+            as={Link}
+            fluid
+            to='/caja'
+          >
             <Icon name="calculator" />
-            Caja
+            { 'Caja' }
           </Button>
         </Segment>
         <Segment attached>
-          <Button as={Link} fluid to={'/'}>
+          <Button
+            as={Link}
+            fluid
+            to='/'
+          >
             <Icon name="food" />
-            Cocina
+            {'Cocina'}
           </Button>
         </Segment>
         <Segment attached>
-          <Button as={Link} fluid to={'/'}>
+          <Button
+            as={Link}
+            fluid
+            to='/'
+          >
             <Icon name="table" />
-            Mesas
+            {'Mesas'}
           </Button>
         </Segment>
         <Segment attached>
-          <Button onClick={this.logout} fluid to={'/'}>
+          <Button
+            fluid
+            onClick={this.handleClick}
+            to='/'
+          >
             <Icon name="window close" />
-            Logout
+            {'Logout'}
           </Button>
         </Segment>
       </DefaultLayout>
@@ -43,7 +59,8 @@ class HomePage extends React.PureComponent {
 }
 
 HomePage.propTypes = {
-  location: PropTypes.object.isRequired
+  location: PropTypes.shape({pathname: PropTypes.string}).isRequired,
+  logout: PropTypes.func.isRequired,
 };
 
 HomePage.defaultProps = {};

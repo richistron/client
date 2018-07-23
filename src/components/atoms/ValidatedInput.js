@@ -3,21 +3,17 @@ import PropTypes from 'prop-types';
 import { Field } from 'redux-form/immutable';
 import FormField from './FormField';
 
-class ValidatedInput extends React.PureComponent {
-  render() {
-    return (
-      <Field
-        component={FormField}
-        error={this.props.error}
-        label={this.props.label}
-        name={this.props.name}
-        placeholder={this.props.placeholder}
-        type={this.props.type}
-        validate={this.props.validate}
-      />
-    );
-  }
-}
+const ValidatedInput = props => (
+  <Field
+    component={FormField}
+    error={props.error}
+    label={props.label}
+    name={props.name}
+    placeholder={props.placeholder}
+    type={props.type}
+    validate={props.validate}
+  />
+);
 
 ValidatedInput.propTypes = {
   error: PropTypes.string,

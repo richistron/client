@@ -6,13 +6,6 @@ import DefaultLayoutController from './DefaultLayoutController';
 import Navigation from '../molecules/Navigation';
 
 class DefaultLayout extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.invalidTenant = this.invalidTenant.bind(this);
-    this.invalidLoding = this.invalidLoding.bind(this);
-    this.toHome = this.toHome.bind(this);
-  }
-
   componentDidMount() {
     if (
       this.props.isUserLogged &&
@@ -24,40 +17,43 @@ class DefaultLayout extends React.PureComponent {
     }
   }
 
-  toHome() {
+  toHome = () => {
     return (
       this.props.tenant &&
       this.props.isUserLogged &&
       (this.props.pathname === '/login' || this.props.pathname === '/tenant') &&
       !this.props.isSessionLoading
     );
-  }
+  };
 
-  invalidLoding() {
+  invalidLoding = () => {
     return (
       this.props.tenant &&
       !this.props.isUserLogged &&
       this.props.pathname !== '/login' &&
       !this.props.isSessionLoading
     );
-  }
+  };
 
-  invalidTenant() {
+  invalidTenant = () => {
     return (
       !this.props.tenant &&
       this.props.pathname !== '/tenant' &&
       !this.props.isSessionLoading
     );
-  }
+  };
 
   render() {
     return (
-      <Container style={{ paddingTop: '20px' }} text>
+      <Container text>
         {this.invalidTenant() && <Redirect to={{ pathname: '/tenant' }} />}
         {this.invalidLoding() && <Redirect to={{ pathname: '/login' }} />}
         {this.toHome() && <Redirect to={{ pathname: '/' }} />}
         <Navigation pathname={this.props.pathname} />
-        <Grid textAlign="center" verticalAlign="middle">
+        <Grid
+          textAlign='center'
+          verticalAlign='middle'
+        >
           <Grid.Column>{this.props.children}</Grid.Column>
         </Grid>
       </Container>
@@ -65,12 +61,21 @@ class DefaultLayout extends React.PureComponent {
   }
 }
 
-DefaultLayout.defaultProps = {};
+DefaultLayout.defaultProps = {
+  children: null,
+  email: null,
+  isSessionLoading: false,
+  tenant: null,
+};
 
 DefaultLayout.propTypes = {
+  children: PropTypes.oneOfType([PropTypes.array, PropTypes.element, PropTypes.node]),
+  email: PropTypes.string,
+  isSessionLoading: PropTypes.bool,
   isUserLogged: PropTypes.bool.isRequired,
   pathname: PropTypes.string.isRequired,
-  tenant: PropTypes.string.isRequired
+  tenant: PropTypes.string,
+  validateToken: PropTypes.func.isRequired,
 };
 
 export default DefaultLayoutController(DefaultLayout);

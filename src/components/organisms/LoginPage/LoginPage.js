@@ -1,7 +1,7 @@
 import DefaultLayout from '../../layouts/DefaultLayout';
 import PropTypes from 'prop-types';
 import React from 'react';
-// import { Header, Grid } from 'semantic-ui-react';
+import { Divider } from 'semantic-ui-react';
 import ValidatedInput from '../../atoms/ValidatedInput';
 import ValidatedForm from '../../atoms/ValidatedForm';
 import Submit from '../../atoms/Submit';
@@ -12,11 +12,16 @@ class LoginPage extends React.PureComponent {
     this.props.handleSubmit();
   };
 
+  handleClick = e => {
+    e.preventDefault();
+    this.props.deleteTenant();
+  };
+
   render() {
     return (
       <DefaultLayout pathname={this.props.location.pathname}>
         <ValidatedForm
-          form="Login"
+          form='Login'
           handleSubmit={this.onHandleSubmit}
           initialData={{ password: null, email: null }}
           loading={this.props.isLoading}
@@ -24,17 +29,15 @@ class LoginPage extends React.PureComponent {
         >
           <ValidatedInput
             error={this.props.errors.get('email')}
-            label="Dirección de Correo"
-            name="email"
-            placeholder="juan@example.com"
+            name='email'
+            placeholder='Dirección de Correo'
           />
 
           <ValidatedInput
             error={this.props.errors.get('password')}
-            label="Contraseña"
-            name="password"
-            placeholder="*****"
-            type="password"
+            name='password'
+            placeholder='Contraseña'
+            type='password'
           />
 
           <Submit
@@ -42,6 +45,12 @@ class LoginPage extends React.PureComponent {
             fluid
             loading={this.props.isLoading}
           />
+
+          <Divider />
+
+          <a onClick={this.handleClick}>
+            {'Cambiar Empresa'}
+          </a>
         </ValidatedForm>
       </DefaultLayout>
     );
@@ -49,12 +58,13 @@ class LoginPage extends React.PureComponent {
 }
 
 LoginPage.propTypes = {
-  errors: PropTypes.object.isRequired,
+  deleteTenant: PropTypes.func.isRequired,
+  errors: PropTypes.shape({ get: PropTypes.func, }).isRequired,
   handleSubmit: PropTypes.func.isRequired,
   isLoading: PropTypes.bool,
   isValid: PropTypes.bool,
-  location: PropTypes.object.isRequired,
-  validateForm: PropTypes.func.isRequired
+  location: PropTypes.shape({ pathname: PropTypes.string, }).isRequired,
+  validateForm: PropTypes.func.isRequired,
 };
 
 LoginPage.defaultProps = {

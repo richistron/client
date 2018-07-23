@@ -32,6 +32,14 @@ const tenantThunks = {
         reject();
       })
   }),
+
+  deleteTenant: () => (dispatch) => new Promise((resolve) => {
+    ls('tenant_name', null);
+    ls('tenant_id', null);
+    ls('tenant_application', null);
+    dispatch(tenantActions.saveName({id: null, name: null, application: null}))
+    resolve();
+  }),
 };
 
 export default tenantThunks;

@@ -4,6 +4,7 @@ import sessionSelector from '../../../selectors/sessionSelector';
 import { getFormSyncErrors } from 'redux-form/immutable';
 import { isValid } from 'redux-form/immutable';
 import Validator from '../../../helpers/Validator';
+import tenantThunks from '../../../thunks/tenantThunks';
 
 const required = Validator.get('required');
 const min = Validator.get('min');
@@ -37,6 +38,8 @@ export default Component =>
           return { password: min(4)(values.get('password')) };
         }
         return null;
-      }
+      },
+
+      deleteTenant: () => dispatch(tenantThunks.deleteTenant()),
     })
   )(Component);
