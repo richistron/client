@@ -17,6 +17,8 @@
     "react/jsx-filename-extension": 0, // Restrict file extensions that may contain JSX
     "react/jsx-first-prop-new-line":2, // Enforce position of the first prop in JSX (fixable)
     "react/jsx-handler-names":2, // Enforce event handler naming conventions in JSX
+    "react/jsx-indent": 0, // Validate JSX indentation (fixable)
+    "react/jsx-indent-props": 0, // Validate props indentation in JSX (fixable)
     "react/jsx-key":2, // Validate JSX has key prop when in array or iterator
     "react/jsx-max-depth": 0, // Validate JSX maximum depth
     "react/jsx-max-props-per-line":2, // Limit maximum of props on a single line in JSX (fixable)
@@ -45,6 +47,7 @@
     "react/forbid-component-props":2, // Forbid certain props on Components
     "react/forbid-dom-props": 0, // Forbid certain props on DOM Nodes
     "react/forbid-elements":2, // Forbid certain elements
+    "react/forbid-prop-types":2, // Forbid certain propTypes
     "react/forbid-foreign-prop-types":2, // Forbid foreign propTypes
     "react/no-access-state-in-setstate": 0, // Prevent using this.state inside this.setState
     "react/no-array-index-key":2, // Prevent using Array index in key props
