@@ -7,7 +7,7 @@ import ValidatedForm from '../../atoms/ValidatedForm';
 import Submit from '../../atoms/Submit';
 
 class LoginPage extends React.PureComponent {
-  handleSubmit = e => {
+  onHandleSubmit = e => {
     e.preventDefault();
     this.props.handleSubmit();
   };
@@ -16,33 +16,30 @@ class LoginPage extends React.PureComponent {
     return (
       <DefaultLayout pathname={this.props.location.pathname}>
         <ValidatedForm
-          form={'Login'}
-          handleSubmit={this.handleSubmit}
-          validate={this.props.validateForm}
+          form="Login"
+          handleSubmit={this.onHandleSubmit}
+          initialData={{ password: null, email: null }}
           loading={this.props.isLoading}
-          initialData={{
-            password: null,
-            email: null
-          }}
+          validate={this.props.validateForm}
         >
           <ValidatedInput
-            label={'Dirección de Correo'}
-            name={'email'}
-            placeholder={'juan@example.com'}
             error={this.props.errors.get('email')}
+            label="Dirección de Correo"
+            name="email"
+            placeholder="juan@example.com"
           />
 
           <ValidatedInput
-            label={'Contraseña'}
-            name={'password'}
-            placeholder={'*****'}
-            type={'password'}
             error={this.props.errors.get('password')}
+            label="Contraseña"
+            name="password"
+            placeholder="*****"
+            type="password"
           />
 
           <Submit
-            fluid
             disabled={!this.props.isValid}
+            fluid
             loading={this.props.isLoading}
           />
         </ValidatedForm>
@@ -53,9 +50,16 @@ class LoginPage extends React.PureComponent {
 
 LoginPage.propTypes = {
   errors: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired
+  handleSubmit: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool,
+  isValid: PropTypes.bool,
+  location: PropTypes.object.isRequired,
+  validateForm: PropTypes.func.isRequired
 };
 
-LoginPage.defaultProps = {};
+LoginPage.defaultProps = {
+  isLoading: false,
+  isValid: false
+};
 
 export default LoginPage;

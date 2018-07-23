@@ -45,7 +45,6 @@
     "react/forbid-component-props":2, // Forbid certain props on Components
     "react/forbid-dom-props": 0, // Forbid certain props on DOM Nodes
     "react/forbid-elements":2, // Forbid certain elements
-    "react/forbid-prop-types":2, // Forbid certain propTypes
     "react/forbid-foreign-prop-types":2, // Forbid foreign propTypes
     "react/no-access-state-in-setstate": 0, // Prevent using this.state inside this.setState
     "react/no-array-index-key":2, // Prevent using Array index in key props
