@@ -6,6 +6,24 @@ import DefaultLayoutController from './DefaultLayoutController';
 import Navigation from '../molecules/Navigation';
 
 class DefaultLayout extends React.PureComponent {
+
+  static defaultProps = {
+    children: null,
+    email: null,
+    isSessionLoading: false,
+    tenant: null,
+  };
+
+  static propTypes = {
+    children: PropTypes.oneOfType([PropTypes.array, PropTypes.element, PropTypes.node]),
+    email: PropTypes.string,
+    isSessionLoading: PropTypes.bool,
+    isUserLogged: PropTypes.bool.isRequired,
+    pathname: PropTypes.string.isRequired,
+    tenant: PropTypes.string,
+    validateToken: PropTypes.func.isRequired,
+  };
+
   componentDidMount() {
     if (
       this.props.isUserLogged &&
@@ -43,7 +61,7 @@ class DefaultLayout extends React.PureComponent {
     );
   };
 
-  render() {
+  render = () => {
     return (
       <Container text>
         {this.invalidTenant() && <Redirect to={{ pathname: '/tenant' }} />}
@@ -61,21 +79,5 @@ class DefaultLayout extends React.PureComponent {
   }
 }
 
-DefaultLayout.defaultProps = {
-  children: null,
-  email: null,
-  isSessionLoading: false,
-  tenant: null,
-};
-
-DefaultLayout.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.array, PropTypes.element, PropTypes.node]),
-  email: PropTypes.string,
-  isSessionLoading: PropTypes.bool,
-  isUserLogged: PropTypes.bool.isRequired,
-  pathname: PropTypes.string.isRequired,
-  tenant: PropTypes.string,
-  validateToken: PropTypes.func.isRequired,
-};
 
 export default DefaultLayoutController(DefaultLayout);
