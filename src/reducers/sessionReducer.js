@@ -1,5 +1,5 @@
 import { fromJS } from 'immutable';
-import { sessionActionsTypes } from '../thunks/sessionActions';
+import { actionTypes } from '../thunks/sessionThunks';
 import ls from 'local-storage';
 
 export const INITIAL_STATE = fromJS({
@@ -22,22 +22,22 @@ const sessionReducer = (state, action) => {
   }
 
   switch (action.type) {
-    case sessionActionsTypes.SESSION_SAVE_TOKEN: {
+    case actionTypes.SESSION_SAVE_TOKEN: {
       return state
         .set('client', action.client)
         .set('access_token', action.access_token)
         .set('uid', action.uid);
     }
 
-    case sessionActionsTypes.SESSION_SET_ERRORS: {
+    case actionTypes.SESSION_SET_ERRORS: {
       return state.set('errors', fromJS(action.errors));
     }
 
-    case sessionActionsTypes.SESSION_LOADING: {
+    case actionTypes.SESSION_LOADING: {
       return state.set('isLoading', action.isLoading);
     }
 
-    case sessionActionsTypes.SESSION_SAVE_USER: {
+    case actionTypes.SESSION_SAVE_USER: {
       return state
         .set('nickname', action.nickname)
         .set('tenant_id', action.tenant_id)
