@@ -1,8 +1,8 @@
-const sessionActionsTypes = {
+const actionsTypes = {
   SESSION_SAVE_TOKEN: 'SESSION_SAVE_TOKEN',
   SESSION_SET_ERRORS: 'SESSION_SET_ERRORS',
   SESSION_LOADING: 'SESSION_LOADING',
   SESSION_SAVE_USER: 'SESSION_SAVE_USER'
 };
 
-export default sessionActionsTypes;
+export default actionsTypes;

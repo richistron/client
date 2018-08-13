@@ -1,11 +1,8 @@
-import sessionThunks from './sessionThunks';
+import _thunks from './thunks';
+import _actionsTypes from './actionsTypes';
+import _actions from './actions';
 
-import _sessionActionsTypes from './sessionActionsTypes';
+export const actionTypes = _actionsTypes;
+export const actions = _actions;
+export const thunks = _thunks;
 
-import _sessionActions from './sessionActions';
-
-export const actionTypes = _sessionActionsTypes;
-
-export const actions = _sessionActions;
-
-export default sessionThunks;

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import sessionThunks from '../../../thunks/sessionThunks';
+import { thunks as sessionThunks } from '../../../thunks/sessionThunks';
 import sessionSelector from '../../../selectors/sessionSelector';
 import { getFormSyncErrors } from 'redux-form/immutable';
 import { isValid } from 'redux-form/immutable';
@@ -21,7 +21,7 @@ export default Component =>
 
     dispatch => ({
       handleSubmit: () => {
-        dispatch(sessionThunks.doLoding());
+        dispatch(sessionThunks.doLogin());
       },
 
       validateForm: values => {

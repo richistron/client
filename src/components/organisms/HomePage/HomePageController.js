@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import sessionThunks from '../../../thunks/sessionThunks';
+import { thunks } from '../../../thunks/sessionThunks';
 
 export default Component =>
   connect(
@@ -7,6 +7,6 @@ export default Component =>
     () => ({}),
     // dispatch
     dispatch => ({
-      logout: () => dispatch(sessionThunks.logout())
+      logout: () => dispatch(thunks.logout())
     })
   )(Component);

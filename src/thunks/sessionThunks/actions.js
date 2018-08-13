@@ -1,6 +1,6 @@
 import { actionTypes } from './index';
 
-const sessionActions = {
+const actions = {
   loading: isLoading => ({
     type: actionTypes.SESSION_LOADING,
     isLoading
@@ -26,4 +26,4 @@ const sessionActions = {
   })
 };
 
-export default sessionActions;
+export default actions;
