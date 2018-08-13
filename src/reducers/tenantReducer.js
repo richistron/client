@@ -1,4 +1,4 @@
-import {tenantActionsTypes} from '../thunks/tenantActions';
+import {actionTypes} from '../thunks/tenantThunks';
 import ls from 'local-storage';
 import {fromJS} from 'immutable';
 
@@ -18,17 +18,17 @@ const tenantReducer = (state, action) => {
   }
 
   switch (action.type) {
-    case tenantActionsTypes.TENANT_SAVE: {
+    case actionTypes.TENANT_SAVE: {
       return state.set('name', action.name)
         .set('id', action.id)
         .set('application', action.application);
     }
 
-    case tenantActionsTypes.TENANT_SET_ERROR: {
+    case actionTypes.TENANT_SET_ERROR: {
       return state.set('errors', fromJS(action.errors))
     }
 
-    case tenantActionsTypes.TENANT_LOADING: {
+    case actionTypes.TENANT_LOADING: {
       return state.set('isLoading', action.isLoading);
     }
 

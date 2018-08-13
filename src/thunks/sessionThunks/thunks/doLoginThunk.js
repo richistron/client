@@ -1,6 +1,6 @@
-import {actions, thunks} from './index';
-import Api from '../../helpers/Api';
-import { encode } from '../../helpers/Crypto';
+import {actions, thunks} from '../index';
+import Api from '../../../helpers/Api';
+import { encode } from '../../../helpers/Crypto';
 import {getFormValues} from 'redux-form/immutable';
 
 const doLoginThunk = () => (dispatch, getState) =>

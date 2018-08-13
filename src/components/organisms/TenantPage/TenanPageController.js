@@ -1,5 +1,5 @@
 import tenantSelector from '../../../selectors/tenantSelector';
-import tenantThunks from '../../../thunks/tenantThunks';
+import { thunks } from '../../../thunks/tenantThunks';
 import { connect } from 'react-redux';
 import { isValid } from 'redux-form/immutable';
 import Validator from '../../../helpers/Validator';
@@ -14,7 +14,7 @@ const mapProps = state => ({
 });
 
 const mapDispatchProps = dispatch => ({
-  handleSubmit: () => dispatch(tenantThunks.getTenant()),
+  handleSubmit: () => dispatch(thunks.getTenant()),
   validateForm: values => {
     if (required(values.get('tenant'))) {
       return { tenant: 'Este campo es obligatorio' };

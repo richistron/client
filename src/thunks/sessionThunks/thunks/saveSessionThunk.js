@@ -1,5 +1,5 @@
 import ls from 'local-storage';
-import {actions} from './index';
+import {actions} from '../index';
 
 // TODO make ls a helper
 const saveSessionThunk = ({ access_token, client, uid }) => dispatch =>

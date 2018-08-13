@@ -1,4 +1,4 @@
-import {thunks, actions} from './index';
+import {thunks, actions} from '../index';
 
 const logOutThunk = () => dispatch => new Promise((resolve)=> {
   dispatch(

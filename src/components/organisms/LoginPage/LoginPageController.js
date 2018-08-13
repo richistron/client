@@ -1,10 +1,10 @@
-import { connect } from 'react-redux';
-import { thunks as sessionThunks } from '../../../thunks/sessionThunks';
+import Validator from '../../../helpers/Validator';
 import sessionSelector from '../../../selectors/sessionSelector';
+import { connect } from 'react-redux';
 import { getFormSyncErrors } from 'redux-form/immutable';
 import { isValid } from 'redux-form/immutable';
-import Validator from '../../../helpers/Validator';
-import tenantThunks from '../../../thunks/tenantThunks';
+import { thunks as sessionThunks } from '../../../thunks/sessionThunks';
+import { thunks as tenantThunks } from '../../../thunks/tenantThunks';
 
 const required = Validator.get('required');
 const min = Validator.get('min');
