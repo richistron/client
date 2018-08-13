@@ -1,13 +1,13 @@
-import validateTokenThunk from './validateTokenThunk';
+import doLoginThunk from './doLoginThunk';
 import logOutThunk from './logOutThunk';
 import saveSessionThunk from './saveSessionThunk';
-import doLoginThunk from './doLoginThunk';
+import validateTokenThunk from './validateTokenThunk';
 
 const thunks = {
   doLogin: doLoginThunk,
+  logout: logOutThunk,
   saveSession: saveSessionThunk,
   validateToken: validateTokenThunk,
-  logout: logOutThunk,
 };
 
 export default thunks;

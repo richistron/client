@@ -1,5 +1,5 @@
-import {actions, thunks} from '../index';
 import Api from '../../../helpers/Api';
+import {actions, thunks} from '../index';
 
 const validateTokenThunk = () => dispatch => new Promise((resolve, reject) => {
   dispatch(actions.loading(true));
