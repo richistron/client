@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import isUserLogged from '../../selectors/isUserLogged';
 import tenantSelector from '../../selectors/tenantSelector';
-import { thunks } from '../../thunks/sessionThunks';
+import { sessionThunks } from '../../reducers/session';
 import sessionSelector from '../../selectors/sessionSelector';
 
 const props = state => ({
@@ -12,7 +12,7 @@ const props = state => ({
 });
 
 const methods = dispatch => ({
-  validateToken: () => dispatch(thunks.validateToken())
+  validateToken: () => dispatch(sessionThunks.validateToken())
 });
 
 export default Component =>

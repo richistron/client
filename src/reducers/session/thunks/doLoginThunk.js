@@ -1,11 +1,11 @@
 import Api from '../../../helpers/Api';
 import { encode } from '../../../helpers/Crypto';
-import {actions, thunks} from '../index';
+import {sessionActions, sessionThunks} from '../index';
 import {getFormValues} from 'redux-form/immutable';
 
 const doLoginThunk = () => (dispatch, getState) =>
   new Promise((resolve, reject) => {
-    dispatch(actions.loading(true));
+    dispatch(sessionActions.loading(true));
     Api({
       method: 'POST',
       url: '/auth/sign_in',
@@ -13,22 +13,22 @@ const doLoginThunk = () => (dispatch, getState) =>
       data: getFormValues('Login')(getState()).toJS()
     })
       .then(res => {
-        dispatch(actions.loading(false));
+        dispatch(sessionActions.loading(false));
         const access_token = encode(res.header['access-token']);
         const client = encode(res.header['client']);
         const uid = encode(res.header['uid']);
 
-        dispatch(thunks.saveSession({ access_token, client, uid }));
-        dispatch(actions.saveUser(res.body.data));
+        dispatch(sessionThunks.saveSession({ access_token, client, uid }));
+        dispatch(sessionActions.saveUser(res.body.data));
         resolve();
       })
       .catch(({ statusCode }) => {
-        dispatch(actions.loading(false));
+        dispatch(sessionActions.loading(false));
         if (statusCode === 401) {
           dispatch(
-            actions.setErrors({ password: 'Contraseña invalida' })
+            sessionActions.setErrors({ password: 'Contraseña invalida' })
           );
-          setTimeout(() => dispatch(actions.setErrors({})), 3000);
+          setTimeout(() => dispatch(sessionActions.setErrors({})), 3000);
         }
         reject();
       });

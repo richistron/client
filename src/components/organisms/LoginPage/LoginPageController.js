@@ -3,7 +3,7 @@ import sessionSelector from '../../../selectors/sessionSelector';
 import { connect } from 'react-redux';
 import { getFormSyncErrors } from 'redux-form/immutable';
 import { isValid } from 'redux-form/immutable';
-import { thunks as sessionThunks } from '../../../thunks/sessionThunks';
+import { sessionThunks } from '../../../reducers/session';
 import { thunks as tenantThunks } from '../../../thunks/tenantThunks';
 
 const required = Validator.get('required');

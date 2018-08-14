@@ -1,28 +1,28 @@
 import Api from '../../../helpers/Api';
-import {actions, thunks} from '../index';
+import {sessionActions, sessionThunks} from '../index';
 import AsyncThunk from '../../../helpers/AsyncThunk';
 
 const validateTokenThunk = AsyncThunk(({dispatch}) => {
-  dispatch(actions.loading(true));
+  dispatch(sessionActions.loading(true));
   return Api({
     method: 'GET',
     url: '/auth/validate_token'
   })
     .then(res => {
-      dispatch(actions.saveUser(res.body.data));
-      dispatch(actions.loading(false));
+      dispatch(sessionActions.saveUser(res.body.data));
+      dispatch(sessionActions.loading(false));
     })
     .catch(() => {
-      dispatch(actions.loading(false));
+      dispatch(sessionActions.loading(false));
       dispatch(
-        thunks.saveSession({
+        sessionThunks.saveSession({
           access_token: null,
           client: null,
           uid: null
         })
       );
       dispatch(
-        actions.saveUser({
+        sessionActions.saveUser({
           nickname: null,
           email: null,
           tenant_id: null

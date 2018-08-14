@@ -1,4 +1,4 @@
-import sessionReducer from './sessionReducer';
+import sessionReducer from './session/sessionReducer';
 import tenantReducer from './tenantReducer';
 import thunk from 'redux-thunk';
 import { combineReducers } from 'redux-immutable';
