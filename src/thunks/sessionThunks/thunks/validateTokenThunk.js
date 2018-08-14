@@ -1,16 +1,16 @@
 import Api from '../../../helpers/Api';
 import {actions, thunks} from '../index';
+import AsyncThunk from '../../../helpers/AsyncThunk';
 
-const validateTokenThunk = () => dispatch => new Promise((resolve, reject) => {
+const validateTokenThunk = AsyncThunk(({dispatch}) => {
   dispatch(actions.loading(true));
-  Api({
+  return Api({
     method: 'GET',
     url: '/auth/validate_token'
   })
     .then(res => {
       dispatch(actions.saveUser(res.body.data));
       dispatch(actions.loading(false));
-      resolve();
     })
     .catch(() => {
       dispatch(actions.loading(false));
@@ -28,7 +28,6 @@ const validateTokenThunk = () => dispatch => new Promise((resolve, reject) => {
           tenant_id: null
         })
       );
-      reject();
     });
 });
 

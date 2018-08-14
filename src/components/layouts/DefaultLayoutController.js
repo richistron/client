@@ -12,9 +12,7 @@ const props = state => ({
 });
 
 const methods = dispatch => ({
-  validateToken: () => {
-    dispatch(thunks.validateToken());
-  }
+  validateToken: () => dispatch(thunks.validateToken())
 });
 
 export default Component =>
